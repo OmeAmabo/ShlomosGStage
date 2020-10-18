@@ -1,7 +1,8 @@
 
 def getSteps(W, N, x):
     counter = 0
-    #implement
+    for i in range(W):
+        counter += min(abs(W[i]-x), N-abs(W[i]-x))
     return counter
 
 def binarySearchWithBranch(W, N, low, high, branchInLeft, startValue):
