@@ -16,3 +16,5 @@ def testCase(case_num):
 num_tests = int(input())
 for i in range(num_tests):
     testCase(i+1)
+
+
