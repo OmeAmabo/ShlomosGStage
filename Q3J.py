@@ -1,3 +1,4 @@
+def getClosestFromA
 
 def getSteps(W, N, x):
     counter = 0
@@ -81,3 +82,21 @@ def cyclicBinarySearch(W, N):
         x = getSteps(W, N, mid)
 
     return x
+
+
+def getInput():
+    W_len, N = [int(i) for i in input().split(' ')]
+    W = [int(i) for i in input().split(' ')]
+
+    return W, N
+
+
+def testCase(case_num):
+    W, N = getInput()
+    ans = cyclicBinarySearch(W, N)
+    print('Case #' + str(case_num) + ': ' + str(ans))
+
+
+num_tests = int(input())
+for i in range(num_tests):
+    testCase(i + 1)

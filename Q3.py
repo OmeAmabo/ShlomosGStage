@@ -1,3 +1,23 @@
+def getClosestIndexFromAbove(W, mid):
+    closestIndex = -1
+    min = -1
+    for i in range(len(W)):
+        if W[i] > mid and (min == -1 or min > W[i]-mid):
+            closestIndex = i
+            min = W[i]-mid
+
+    return closestIndex
+
+def getClosestIndexFromUnder(W, mid):
+    closestIndex = -1
+    min = -1
+    for i in range(len(W)):
+        if W[i] < mid and (min == -1 or min > mid-W[i]):
+            closestIndex = i
+            min = mid-W[i]
+
+    return closestIndex
+
 def getSteps(W, N, x):
     counter = 0
     for i in range(len(W)):
@@ -26,6 +46,20 @@ def binarySearchWithBranch(W, N, low, high, branchInLeft, startValue):
 
         x_l = getSteps(W, N, mid-1)
         x_u = getSteps(W, N, mid+1)
+
+        if x_l == x:
+            i = getClosestIndexFromUnder(W, mid)
+            if i == -1:
+                low = mid
+                break
+            x_l = getSteps(W, N, i)
+
+        if x_u == x:
+            i = getClosestIndexFromAbove(W, mid)
+            if i == -1:
+                high = mid
+                break
+            x_u = getSteps(W, N, i)
 
         if x_l >= x and x_u >= x:
             return x
@@ -68,6 +102,20 @@ def cyclicBinarySearch(W, N):
 
         x_l = getSteps(W, N, mid-1)
         x_u = getSteps(W, N, mid+1)
+
+        if x_l == x:
+            i = getClosestIndexFromUnder(W, mid)
+            if i == -1:
+                low = mid
+                break
+            x_l = getSteps(W, N, i)
+
+        if x_u == x:
+            i = getClosestIndexFromAbove(W, mid)
+            if i == -1:
+                high = mid
+                break
+            x_u = getSteps(W, N, i)
 
         if x_l >= x and x_u >= x:
             return x
