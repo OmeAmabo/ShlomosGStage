@@ -5,6 +5,7 @@ def getSteps(W, N, x):
     return counter
 
 def binarySearchWithBranch(W, N, low, high, branchInLeft):
+    #private
     mid = (low + high) / 2
 
     while low < high:
